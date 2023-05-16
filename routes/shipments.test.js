@@ -16,6 +16,13 @@ describe("POST /", function () {
     expect(resp.body).toEqual({ shipped: expect.any(Number) });
   });
 
+  test("invalid", async function () {
+    const resp = await request(app).post("/shipments").send({
+      otherkey: {},
+    });
+    expect(resp.statusCode).toEqual(400);
+  });
+
   test("throws error if empty request body", async function () {
     const resp = await request(app)
       .post("/shipments")
@@ -23,3 +30,6 @@ describe("POST /", function () {
     expect(resp.statusCode).toEqual(400);
   });
 });
+
+
+
