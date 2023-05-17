@@ -26,7 +26,8 @@ async function shipProduct({ productId, name, addr, zip }) {
     },
   });
 
+  console.log("shipId.....", resp.data.receipt.shipId)
   return resp.data.receipt.shipId;
 }
 
-module.exports = { shipProduct };
+module.exports = { shipProduct, SHIPIT_SHIP_URL };
